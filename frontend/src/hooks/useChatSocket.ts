@@ -7,7 +7,7 @@ export function useChatSocket(joined: boolean, roomCode: string, name: string) {
   const [userCount, setUserCount] = useState<number | null>(null);
 
   const connectSocket = useCallback(() => {
-    const socket = new WebSocket(`ws://${window.location.hostname}:8080`);
+    const socket = new WebSocket(import.meta.env.VITE_WS_URL);
     socketRef.current = socket;
 
     socket.onopen = () => {
