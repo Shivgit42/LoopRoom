@@ -95,7 +95,13 @@ wss.on("connection", (ws: WebSocket) => {
     try {
       reqObj = JSON.parse(data.toString());
     } catch (err) {
-      ws.send("Invalid message format");
+      ws.send(
+        JSON.stringify({
+          type: "error",
+          payload: { message: "Invalid message format" },
+        })
+      );
+
       return;
     }
 
@@ -111,7 +117,12 @@ wss.on("connection", (ws: WebSocket) => {
       user.set(ws, roomName);
       username.set(ws, name);
 
-      ws.send(`You joined room "${roomName}" successfully`);
+      ws.send(
+        JSON.stringify({
+          type: "notification",
+          payload: { message: `You joined room "${roomName}" successfully` },
+        })
+      );
 
       const roomUsers = rooms.get(roomName)?.size || 0;
       rooms.get(roomName)?.forEach((member) => {
@@ -169,7 +180,12 @@ wss.on("connection", (ws: WebSocket) => {
           }
         });
       } else {
-        ws.send("You are not in any room. Join a room first.");
+        ws.send(
+          JSON.stringify({
+            type: "error",
+            payload: { message: "You are not in any room. Join a room first." },
+          })
+        );
       }
     }
   });
