@@ -38,7 +38,9 @@ export function useChatSocket(joined: boolean, roomCode: string, name: string) {
           break;
 
         case "notification":
-          setChat((prev) => [...prev, `[System]: ${msg.payload.message}`]);
+          if (!msg.payload.message.includes("joined room")) {
+            setChat((prev) => [...prev, `[System]: ${msg.payload.message}`]);
+          }
           break;
 
         default:
