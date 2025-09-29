@@ -1,4 +1,4 @@
-# Real-Time Chat App
+# LoopRoom (Real-Time Chat App)
 
 A lightweight, real-time chat application with **temporary rooms** that automatically expire when all users leave. Designed for quick, ephemeral conversations - no clutter, no permanent history.
 
