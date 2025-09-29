@@ -19,5 +19,3 @@ A lightweight, real-time chat application with **temporary rooms** that automati
 - **Frontend**: React + Vite + Typescript
 - **Backend**: WebSocket + WebSocketServer
 - **Styling**: Tailwind CSS
-
----
